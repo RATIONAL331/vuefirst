@@ -9,7 +9,6 @@
 
 <script>
     export default {
-        props:['propsdata'],
         data() {
             return {
                 newTodoItem:''
@@ -18,7 +17,7 @@
         methods:{
             addTodo(){
                 if(this.newTodoItem !== ""){
-                    const value = this.newTodoItem && this.newTodoItem.trim();
+                    let value = this.newTodoItem && this.newTodoItem.trim();
                     this.$emit('addTodo', value);
                 }
                 this.clearInput();    

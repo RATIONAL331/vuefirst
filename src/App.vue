@@ -25,6 +25,13 @@ export default {
       todoItems : []
     }
   },
+  created(){
+    if(localStorage.length > 0){
+        for(let i = 0; i<localStorage.length; ++i){
+          this.todoItems.push(localStorage.key(i));
+        }
+    }
+  },
   methods : {
     addTodoParent(todoItem){
       localStorage.setItem(todoItem, todoItem);
@@ -32,18 +39,11 @@ export default {
     },
     removeTodoParent(todoItem, idx){
       localStorage.removeItem(todoItem);
-      this.todoItems.splice(index, 1);
+      this.todoItems.splice(idx, 1);
     },
     clearAll(){
       localStorage.clear();
       this.todoItems = [];
-    }
-  },
-  created(){
-    if(localStorage.length > 0){
-        for(let i = 0; i<localStorage.length; ++i){
-            this.todoItems.push(localStorage.key(i));
-        }
     }
   }
 }
